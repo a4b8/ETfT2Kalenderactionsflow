@@ -1,7 +1,7 @@
 name: Send email new RSS Feed items	
 on:
   rss:
-    url: https://hnrss.org/newest?points=300&count=1
+    url: https://rss.golem.de/rss.php?feed=RSS2.0 # https://hnrss.org/newest?points=300&count=1
 jobs:
   email:
     name: Post a email
