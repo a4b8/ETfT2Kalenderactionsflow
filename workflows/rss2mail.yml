@@ -30,8 +30,12 @@ jobs:
           from: ${{secrets.EMAIL_FROM}}
           # Optional content type (defaults to text/plain):
           content_type: text/html
-      - name: Log
-          env:
-            laenge: ${{ on.rss.outputs.content }}
-          run: |
-            echo "Inhaltslaenge: $laenge"
+  print:
+    name: Print
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Outputs
+        env:
+          title: ${{ on.rss.outputs.content }}
+        run: |
+          echo "title: $title"
