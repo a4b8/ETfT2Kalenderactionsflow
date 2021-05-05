@@ -1,7 +1,12 @@
 name: Send email new RSS Feed items	
 on:
   rss:
-    url: http://evangelizo.org/rss/v2/evangelizo_rss-de.xml # https://hnrss.org/newest?points=300&count=1
+    url: https://rss.golem.de/rss.php?feed=RSS2.0 # http://evangelizo.org/rss/v2/evangelizo_rss-de.xml # https://hnrss.org/newest?points=300&count=1
+    config:
+      filterScript: |
+        if(on.rss.output.content.length > 1){
+          return true
+        }
 jobs:
   email:
     name: Post a email
@@ -22,3 +27,8 @@ jobs:
           from: ${{secrets.EMAIL_FROM}}
           # Optional content type (defaults to text/plain):
           content_type: text/html
+      - name: Log
+          env:
+          laenge: ${{ on.rss.outputs.content.length }}
+          run: |
+          echo "Inhaltslaenge: $laenge"
