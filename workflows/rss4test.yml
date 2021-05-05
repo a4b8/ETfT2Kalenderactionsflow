@@ -7,7 +7,7 @@ on:
         content:
             $regex: ....+
       format: |
-        item.title = item.title.substring(item.title.search([0-9]{4}), item.title.search(' : ')) + '-' # + ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'].indexOf(item.title.substring(item.title.search(\d[:blank:]) + 1, item.title.search([0-9]{4}) - 2) + 1) + '-' + item.title.substring(item.title.search(', ') + 1, item.title.search(\d[:blank:]))    # item.title.substring(item.title.search(', ') + 1,item.title.search(' : '))
+        item.title = item.title.substring(item.title.search([0-9]{4}), item.title.search(' : '))
         return item;
 jobs:
   print:
