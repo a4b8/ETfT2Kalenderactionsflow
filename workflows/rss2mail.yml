@@ -4,9 +4,12 @@ on:
     url: https://rss.golem.de/rss.php?feed=RSS2.0 # http://evangelizo.org/rss/v2/evangelizo_rss-de.xml # https://hnrss.org/newest?points=300&count=1
     config:
       filterScript: |
-        if(on.rss.output.content.length > 1){
+        if(item.content.length > 1){
           return true
         }
+      format: |
+        item.content = item.content.length
+        return item;
 jobs:
   email:
     name: Post a email
@@ -29,6 +32,6 @@ jobs:
           content_type: text/html
       - name: Log
           env:
-          laenge: ${{ on.rss.outputs.content.length }}
+          laenge: ${{ on.rss.outputs.content }}
           run: |
           echo "Inhaltslaenge: $laenge"
