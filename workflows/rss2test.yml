@@ -11,7 +11,7 @@ jobs:
     name: Print
     runs-on: ubuntu-latest
     steps:
-      - name: Print Outputs
+      - name: Print Outputs Zwei
         env:
           title: ${{on.rss.outputs.title}}
           content: ${{on.rss.outputs.content}}
