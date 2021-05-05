@@ -1,0 +1,20 @@
+on:
+  rss:
+    url: http://evangelizo.org/rss/v2/evangelizo_rss-de.xml
+    config:
+      limit: 10
+      filter:
+        content:
+            $regex: ....+
+jobs:
+  print:
+    name: Print
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Outputs
+        env:
+          title: ${{on.rss.outputs.title}}
+          content: ${{on.rss.outputs.content}}
+        run: |
+          echo title: $title
+          echo content: $content
