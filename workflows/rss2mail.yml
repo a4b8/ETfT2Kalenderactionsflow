@@ -32,6 +32,6 @@ jobs:
           content_type: text/html
       - name: Log
           env:
-          laenge: ${{ on.rss.outputs.content }}
+            laenge: ${{ on.rss.outputs.content }}
           run: |
-          echo "Inhaltslaenge: $laenge"
+            echo "Inhaltslaenge: $laenge"
