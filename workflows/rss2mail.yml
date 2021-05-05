@@ -2,6 +2,10 @@ name: Send email new RSS Feed items
 on:
   rss:
     url: http://evangelizo.org/rss/v2/evangelizo_rss-de.xml # https://hnrss.org/newest?points=300&count=1
+    config:
+      filter:
+        content:
+            $regex: ....+
 jobs:
   email:
     name: Post a email
