@@ -7,11 +7,7 @@ on:
             $regex: ....+
         title:
             $not:
-              $regex: Evangelium
-            $not:
-              $regex: Psalm
-            $not:
-              $regex: Kommentar
+              $regex: (Evangelium|Kommentar|Psalm)
       format: |
         item.contentSnippet = item.title.substring(item.title.search(/[0-9]{4}/), item.title.search(' : ')) + '-' + (['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'].indexOf(item.title.substring(item.title.search(/Januar|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember/), item.title.search(/[0-9]{4}/) - 1)) + 1) + '-' + item.title.substring(item.title.search(', ') + 2, item.title.search(/Januar|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember/) - 1)
         return item;
