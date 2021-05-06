@@ -47,4 +47,3 @@ jobs:
           echo Ende: $endzeit
           echo Titel: $titel
           echo Inhalt: $text
-© 2021 GitHub, Inc.
