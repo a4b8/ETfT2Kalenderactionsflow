@@ -8,10 +8,8 @@ on:
         title:
             $not:
               $regex: Evangelium
-        title:
             $not:
               $regex: Psalm
-        title:
             $not:
               $regex: Kommentar
       format: |
