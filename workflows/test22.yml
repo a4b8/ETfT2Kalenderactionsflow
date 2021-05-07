@@ -1,0 +1,23 @@
+on:
+  rss:
+    url: http://evangelizo.org/rss/v2/evangelizo_rss-de.xml
+    config:
+      filter:
+        content:
+            $regex: ....+
+        title:
+            $regex: Evangelium
+jobs:
+  tgram:
+    name: Send to Telegram
+    runs-on: ubuntu-latest
+    steps:
+      - name: send custom message
+        uses: appleboy/telegram-action@master
+        with:
+            to: ${{ secrets.TELEGRAM_TO }}
+            token: ${{ secrets.TELEGRAM_TOKEN }}
+            format: markdown
+            message: |
+                *${{on.rss.outputs.title}}*:\r  
+                ${{on.rss.outputs.content}}
