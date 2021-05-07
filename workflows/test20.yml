@@ -19,4 +19,4 @@ jobs:
             token: ${{ secrets.TELEGRAM_TOKEN }}
             format: html
             message: |
-                ${{on.rss.outputs.title}}:<br>${{on.rss.outputs.content}}
+                ${{on.rss.outputs.title}}:  ${{on.rss.outputs.content}}
