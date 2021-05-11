@@ -1,6 +1,6 @@
 on:
   twitter:
-    api: user_timeline
+    api: statuses/user_timeline
     auth:
       consumer_key: ${{ secrets.TWITTER_CONSUMER_KEY }}
       consumer_secret: ${{ secrets.TWITTER_CONSUMER_SECRET }}
@@ -8,8 +8,8 @@ on:
       access_token_secret: ${{ secrets.TWITTER_ACCESS_SECRET }}
     params:
       screen_name: Pontifex_de
-      exclude_replies: true
-      include_rts: false
+      exclude_replies: true,
+      include_rts: false,
 jobs:
   print:
     name: Print
