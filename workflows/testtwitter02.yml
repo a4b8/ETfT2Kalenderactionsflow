@@ -18,11 +18,11 @@ jobs:
     steps:
       - name: send to mastodon
         uses: actionsflow/axios@v1
-              with:
-                url: ${{ secrets.MASTODON_POST_URL }}
-                method: 'POST'
-                accept: 200,201,204
-                content-type: application/x-www-form-urlencoded
-                data: status=${{ on.twitter.outputs.user.name }}: <<<${{ on.twitter.outputs.full_text }}>>>
-                timeout: 10000
-                is_debug: false
+        with:
+          url: ${{ secrets.MASTODON_POST_URL }}
+          method: 'POST'
+          accept: 200,201,204
+          content-type: application/x-www-form-urlencoded
+          data: status=${{ on.twitter.outputs.user.name }}: <<<${{ on.twitter.outputs.full_text }}>>>
+          timeout: 10000
+          is_debug: false
