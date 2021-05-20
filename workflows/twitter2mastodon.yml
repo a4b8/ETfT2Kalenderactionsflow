@@ -25,3 +25,17 @@ jobs:
           data: 'status=Franziskus I: <<<${{ on.twitter.outputs.full_text }}>>>'
           timeout: 10000
           is_debug: false
+  friendica:
+    name: post2friendica
+    runs-on: ubuntu-latest
+    steps:
+      - name: send to friendica
+        uses: actionsflow/axios@v1
+        with:
+          url: ${{ secrets.FRIENDICA_POST_URL }}
+          method: 'POST'
+          accept: 200,201,204
+          content-type: application/x-www-form-urlencoded
+          data: 'key=${{ secrets.FRIENDICA_KEY }}&type=status&msg=<<<${{ on.twitter.outputs.full_text }}>>>&date=<<<${{ on.twitter.outputs.created_at }}>>>&url=<<<https://www.vaticannews.va/de.html>>>'
+          timeout: 10000
+          is_debug: false
