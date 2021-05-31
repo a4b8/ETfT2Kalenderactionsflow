@@ -3,6 +3,7 @@ on:
     url: http://evangelizo.org/rss/v2/evangelizo_rss-de.xml
     config:
       every: "0 8 * * *"
+      limit: 1
       filter:
         content:
             $regex: ....+
