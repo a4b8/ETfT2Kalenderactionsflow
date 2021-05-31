@@ -2,7 +2,7 @@ on:
   rss:
     url: http://evangelizo.org/rss/v2/evangelizo_rss-de.xml
     config:
-      limit: 10
+      limit: 5
       filter:
         content:
             $regex: ....+
