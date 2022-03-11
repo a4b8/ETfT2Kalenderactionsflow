@@ -1,0 +1,33 @@
+on:
+  rss:
+    url:
+      - http://evangelizo.org/rss/v2/evangelizo_rss-de.xml
+      - https://rss.evangelizo.org/rss/v2/evangelizo_rss-de.xml
+    config:
+      limit: 5
+      filter:
+        content:
+            $regex: ....+
+        categories:
+            $regex: LECTIO.2
+      format: |
+        item.contentSnippet = item.title.substring(item.title.search(/[0-9]{4}/), item.title.search(' : ')) + '-' + (['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'].indexOf(item.title.substring(item.title.search(/Januar|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember/), item.title.search(/[0-9]{4}/) - 1)) + 1) + '-' + item.title.substring(item.title.search(', ') + 2, item.title.search(/Januar|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember/) - 1)
+        return item;
+jobs:
+  print:
+    name: Request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Make a HTTP Request
+        uses: actionsflow/axios@main
+        with:
+          url: ${{secrets.KALENDER_API_URL}}
+          method: POST
+          body: |
+            {
+              "titel": "<<<${{on.rss.outputs.title}}>>>",
+              "text": "<<<${{on.rss.outputs.content}}>>>",
+              "startzeit": "${{on.rss.outputs.contentSnippet}}T09:00:00+02",
+              "endzeit": "${{on.rss.outputs.contentSnippet}}T09:30:00+02",
+              "kalender": "${{secrets.ETFT_KALENDERID}}"
+            }
