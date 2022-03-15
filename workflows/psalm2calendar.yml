@@ -11,7 +11,7 @@ on:
         categories:
             $regex: PSALMUS
       format: |
-        item.contentSnippet = item.title.substring(item.title.search(/[0-9]{4}/), item.title.search(' : ')) + '-' + (['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'].indexOf(item.title.substring(item.title.search(/Januar|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember/), item.title.search(/[0-9]{4}/) - 1)) + 1) + '-' + item.title.substring(item.title.search(', ') + 2, item.title.search(/Januar|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember/) - 1)
+        item.contentSnippet = item.guid.substring(0,10)
         return item;
 jobs:
   print:
